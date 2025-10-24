@@ -1,8 +1,8 @@
 class Drop{
   
   constructor(particle, follow){
-    let min_ = -0.5;
-    let max_ = 0.5;
+    let min_ = -1 - map(height*width, 600*600, 1920*1080, 0, 2);
+    let max_ = 1 + map(height*width, 600*600, 1920*1080, 0, 2);
     this.startPos = particle.pos;
     this.particle = particle;
     this.particle.vel = createVector(random(min_, max_), random(min_, max_));
@@ -11,7 +11,7 @@ class Drop{
   }
   
   display(){
-    this.particle.display(this.alpha);
+    this.particle.display(this.alpha, createVector(255, 255, 180));
   }
   
   update(){
@@ -23,7 +23,7 @@ class Drop{
     let minDis = 0;
     let dir = p5.Vector.sub(attractor, this.particle.pos);
     //console.log(dir.mag());
-    this.alpha = map(dir.mag(), minDis, maxDis, 15, 100)
+    this.alpha = map(dir.mag(), minDis, maxDis, 16, 100)
     
     //console.log(this.alpha);
     this.particle.follow(attractor);
@@ -35,6 +35,10 @@ class Drop{
     }else{
       return false;
     }
+  }
+  
+  shouldDie(){
+    return (this.particle.life <= 0);
   }
   
 }

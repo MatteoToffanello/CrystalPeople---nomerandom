@@ -16,13 +16,16 @@ let xoff = 1, yoff  =1;
 let inc = 0.1;
 
 function setup() {
-  createCanvas(600, 600);
-
+  if(windowWidth <= 1920 && windowHeight<= 1080){
+      createCanvas(windowWidth, windowHeight);
+  }else{
+      createCanvas(1920, 1080);
+  }
   for(let i = 0; i < 3; i++){
     generators.push(createVector(random(width/6, width/6 * 5), 0));
   }
   
-  attractor = createVector(random(width/4, width/4 * 3), random(width/4, width/4 * 3));
+  attractor = createVector(width/3 * 2, height/2);
   
 
   
@@ -69,7 +72,7 @@ function draw() {
   
   //console.log(drops.length);
   for(let i = 0 ; i < drops.length; i++){
-    if(drops[i].isAtLight(attractor)){
+    if(drops[i].isAtLight(attractor) || drops[i].shouldDie()){
       console.log("YES");
       drops.splice(i, 1);
       i--;
