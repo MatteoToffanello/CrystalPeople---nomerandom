@@ -8,3 +8,15 @@ canvas {
   display: block;
   filter: blur(5px) contrast(5);
 }
+
+
+h2{
+  z-index: 999;
+  color: white;
+  position: absolute;
+  top: calc(100vh/7.5);
+  left: calc(100vw/7.5);
+  font-family:Courier New, Courier, monospace, system-ui;
+  font-size: 2vh;
+  letter-spacing: 1px;
+}

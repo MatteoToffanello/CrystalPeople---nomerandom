@@ -36,6 +36,11 @@ function setup() {
 function draw() {
   background(0);
   
+  strokeWeight(5)
+  stroke(250, 250, 255);
+  textSize(height/15);
+  text('M a t t o f f a r t', width/8, height/8);
+  
   //frameRate(30)
   
   xoff += inc;
